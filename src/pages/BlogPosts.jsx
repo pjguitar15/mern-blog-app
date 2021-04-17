@@ -31,7 +31,7 @@ const BlogPosts = () => {
   const history = useHistory()
   const getData = () => {
     setLoading(true)
-    Axios.get('http://localhost:3001/api/read')
+    Axios.get('https://my-blog-mern-app.herokuapp.com/api/read')
       .then(res => setData(res.data))
       .then(() => {
         setLoading(false)
