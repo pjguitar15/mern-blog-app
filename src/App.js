@@ -1,25 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import styled from 'styled-components'
+import './App.css'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+// Context
+import ThemeProvider from './Context/ThemeProvider'
+import BlogPostSelected from './Context/BlogPostSelected'
+// components
+import NavbarComp from './components/NavbarComp.jsx'
+import Footer from './components/Footer.jsx'
+// pages
+import Home from './pages/Home.jsx'
+import BlogPosts from './pages/BlogPosts.jsx'
+import BlogPost from './pages/BlogPost.jsx'
+import CreateBlogPost from './pages/Create.jsx'
+// themes
+import Theme1 from './Themes/Theme1.jsx'
 
-function App() {
+const MainWrapper = styled.div`
+  background: #f8f9fe;
+`
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <MainWrapper>
+      <ThemeProvider>
+        <Router>
+          <BlogPostSelected>
+            <NavbarComp />
+            <Switch>
+              <Route exact path='/'>
+                <Home />
+              </Route>
+              <Route path='/blogposts'>
+                <BlogPosts />
+              </Route>
+              <Route path='/blog-post-item'>
+                <BlogPost />
+              </Route>
+              <Route exact path='/create-blog-post'>
+                <CreateBlogPost />
+              </Route>
+              <Route path='/create-blog-post/theme-select'>
+                <Theme1 />
+              </Route>
+            </Switch>
+          </BlogPostSelected>
+        </Router>
+        <Footer />
+      </ThemeProvider>
+    </MainWrapper>
+  )
 }
 
-export default App;
+export default App
