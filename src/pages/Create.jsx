@@ -40,7 +40,7 @@ const Create = () => {
       console.log(nameRef.current.value)
       console.log(selectedTheme.id)
       console.log(selectRef.current.value)
-      Axios.post('https://my-blog-mern-app.herokuapp.com/api/post', {
+      Axios.post('http://localhost:3001/api/post', {
         title: 'haha',
         name: nameRef.current.value,
         subTitle: 'haha',
@@ -168,6 +168,41 @@ const Create = () => {
         <input
           ref={nameRef}
           placeholder='We want readers to recognize you'
+          type='text'
+          className='form-control mb-5'
+        />
+        <h3>Title</h3>
+        <input
+          ref={nameRef}
+          placeholder='Largest text on your blog page'
+          type='text'
+          className='form-control mb-5'
+        />
+        <h3>Subtitle</h3>
+        <input
+          ref={nameRef}
+          placeholder='Give a little more description of the title'
+          type='text'
+          className='form-control mb-5'
+        />
+        <h3>Content Header</h3>
+        <input
+          ref={nameRef}
+          placeholder='Enter your content title'
+          type='text'
+          className='form-control mb-5'
+        />
+        <h3>Content Text</h3>
+        <textarea
+          ref={nameRef}
+          placeholder='Enter main contents for your blog'
+          type='text'
+          className='form-control mb-5'
+        />
+        <h3>Sidebar Text</h3>
+        <textarea
+          ref={nameRef}
+          placeholder='Enter sidebar text contents for your blog'
           type='text'
           className='form-control mb-5'
         />

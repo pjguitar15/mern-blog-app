@@ -1,11 +1,12 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
-import { useHistory } from 'react-router-dom'
 import { Container } from 'react-bootstrap'
 import { MyButton } from '../components/MyButton.jsx'
 import LoadingBlog from '../components/LoadingBlog.jsx'
-import Axios from 'axios'
+import { useHistory } from 'react-router-dom'
+// Context
 import { BlogItemClicked } from '../Context/BlogPostSelected'
+import { DataLoading, ReadData } from '../Context/GetDataFromDB'
 const BlogPostWrapper = styled.div`
   /* padding: 10rem 0; */
 `
@@ -25,22 +26,10 @@ const BlogItem = styled.div`
 `
 
 const BlogPosts = () => {
-  const [data, setData] = useState([])
-  const [loading, setLoading] = useState(false)
   const blogItemClicked = useContext(BlogItemClicked)
+  const [data] = useContext(ReadData)
+  const [loading] = useContext(DataLoading)
   const history = useHistory()
-  const getData = () => {
-    setLoading(true)
-    Axios.get('https://my-blog-mern-app.herokuapp.com/api/read')
-      .then(res => setData(res.data))
-      .then(() => {
-        setLoading(false)
-      })
-  }
-
-  useEffect(() => {
-    getData()
-  }, [])
   return (
     <BlogPostWrapper className='text-dark'>
       <div

@@ -5,9 +5,10 @@ export const CurrentBlogItem = React.createContext()
 const BlogPostSelected = ({ children }) => {
   const [currentBlogItem, setCurrentBlogItem] = useState()
   const history = useHistory()
+
   const blogItemClicked = (item) => {
     setCurrentBlogItem(item)
-    history.push('/blog-post-item')
+    history.push(`/blogposts/${item._id}`)
   }
   useEffect(() => {
     console.log(currentBlogItem)

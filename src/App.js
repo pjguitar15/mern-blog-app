@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 // Context
 import ThemeProvider from './Context/ThemeProvider'
 import BlogPostSelected from './Context/BlogPostSelected'
+import GetDataFromDB from './Context/GetDataFromDB'
 // components
 import NavbarComp from './components/NavbarComp.jsx'
 import Footer from './components/Footer.jsx'
@@ -25,24 +26,26 @@ const App = () => {
       <ThemeProvider>
         <Router>
           <BlogPostSelected>
-            <NavbarComp />
-            <Switch>
-              <Route exact path='/'>
-                <Home />
-              </Route>
-              <Route path='/blogposts'>
-                <BlogPosts />
-              </Route>
-              <Route path='/blog-post-item'>
-                <BlogPost />
-              </Route>
-              <Route exact path='/create-blog-post'>
-                <CreateBlogPost />
-              </Route>
-              <Route path='/create-blog-post/theme-select'>
-                <Theme1 />
-              </Route>
-            </Switch>
+            <GetDataFromDB>
+              <NavbarComp />
+              <Switch>
+                <Route exact path='/'>
+                  <Home />
+                </Route>
+                <Route exact path='/blogposts'>
+                  <BlogPosts />
+                </Route>
+                <Route path='/blogposts/:param'>
+                  <BlogPost />
+                </Route>
+                <Route exact path='/create-blog-post'>
+                  <CreateBlogPost />
+                </Route>
+                <Route path='/create-blog-post/theme-select'>
+                  <Theme1 />
+                </Route>
+              </Switch>
+            </GetDataFromDB>
           </BlogPostSelected>
         </Router>
         <Footer />
