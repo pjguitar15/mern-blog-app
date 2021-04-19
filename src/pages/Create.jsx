@@ -40,7 +40,7 @@ const Create = () => {
       console.log(nameRef.current.value)
       console.log(selectedTheme.id)
       console.log(selectRef.current.value)
-      Axios.post('http://localhost:3001/api/post', {
+      Axios.post('https://my-blog-mern-app.herokuapp.com/api/post', {
         title: 'haha',
         name: nameRef.current.value,
         subTitle: 'haha',
