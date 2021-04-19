@@ -3,6 +3,7 @@ import { MyButton } from '../components/MyButton.jsx'
 import styled from 'styled-components'
 import blogpostlayoutimg from '../Assets/blog-post-layout.png'
 import { Container } from 'react-bootstrap'
+import herosvg from '../Assets/herosvg.svg'
 const Jumbotron = styled.div`
   background: #398d80;
   height: 50rem;
@@ -20,6 +21,12 @@ const Home = () => {
     <>
       <Jumbotron className='text-center text-white'>
         <div>
+          <img
+            style={{ width: '50%', opacity: '0.5' }}
+            src={herosvg}
+            alt='hero'
+            className='mb-5'
+          />
           <h1 className='display-4 text-capitalize font-weight-bold'>
             Publish your passions, your way
           </h1>
